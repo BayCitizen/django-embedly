@@ -1,0 +1,1 @@
+-e git+https://github.com/embedly/embedly-python.git@79b4dc457672f96f6376d7fed79efd379f32175b#egg=Embedly-0.2.0-py2.6-dev

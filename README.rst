@@ -9,6 +9,8 @@ scenario.
 Installation
 ------------
 
+Install requirements: pip install -r requirements.txt
+
 Add 'embeds' to INSTALLED_APPS in settings.py.
 
 Run syncdb.

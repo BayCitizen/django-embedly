@@ -1,15 +1,16 @@
 BayCitizen / django-embedly
 ===========================
 
-This packages provides a template filter to parse embed URLs and call the
+This package provides a template filter to parse embed URLs and call the
 embedly API to generate embed HTML. It uses django's caching backend to cache
 the response and it saves the same data in a database for embedly doomsday
-scenarios.
+scenario.
 
 Installation
 ------------
 
-Add to INSTALLED_APPS in settings.py.
+Add 'embeds' to INSTALLED_APPS in settings.py.
+
 Run syncdb.
 
 Usage
@@ -24,7 +25,7 @@ Given a template context variable that looks like::
     """
 
 Include these lines in your template to embed the youtube video with a maximum
-width of 400px.::
+width of 400px::
 
     {% load embed_filters %}
 

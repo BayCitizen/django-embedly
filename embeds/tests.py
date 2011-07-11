@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.core.cache import cache
+from django.db import IntegrityError
 from embeds.templatetags.embed_filters import embedly
 from embeds.models import SavedEmbed
 
@@ -84,3 +85,16 @@ class EmbedlyTemplateFilterTest(TestCase):
 
         embed = embedly(self.text['video'], 444)
         self.assertTrue('444' in embed)
+
+    def test_unique_fields(self):
+        url = 'http://www.youtube.com/watch?v=DCL1RpgYxRM'
+
+        SavedEmbed.objects.create(url=url, maxwidth=100, type='video',
+                html='100')
+        SavedEmbed.objects.create(url=url, maxwidth=200, type='video',
+                html='200')
+
+        self.assertEqual(SavedEmbed.objects.count(), 2)
+
+        self.assertRaises(IntegrityError, SavedEmbed.objects.create,
+                url=url, maxwidth=100, type='video', html='this should break')

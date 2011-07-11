@@ -14,5 +14,9 @@ class SavedEmbed(models.Model):
     html = models.TextField(blank=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        unique_together = ('url', 'maxwidth')
+
     def __unicode__(self):
         return self.url
+

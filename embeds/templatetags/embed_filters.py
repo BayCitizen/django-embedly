@@ -9,7 +9,7 @@ from embeds.models import SavedEmbed
 
 register = template.Library()
 
-EMBED_REGEX = re.compile(r'embed:\s*(http[^\s]+)', re.I)
+EMBED_REGEX = re.compile(r'embed:\s*(https?://[\w\d:#@%/;$()~_?\+\-=\\\.&]+)', re.I)
 USER_AGENT = 'Mozilla/5.0 (compatible; TheBayCitizen/0.1; ' \
         '+http://www.baycitizen.org/)'
 

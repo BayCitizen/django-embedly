@@ -98,3 +98,11 @@ class EmbedlyTemplateFilterTest(TestCase):
 
         self.assertRaises(IntegrityError, SavedEmbed.objects.create,
                 url=url, maxwidth=100, type='video', html='this should break')
+
+    def test_ignore_html(self):
+        text = '<p>Embed: http://www.youtube.com/watch?v=DCL1RpgYxRM</p>'
+
+        embedly(text)
+
+        self.assertTrue(SavedEmbed.objects.all()[0].url,
+            'http://www.youtube.com/watch?v=DCL1RpgYxRM')

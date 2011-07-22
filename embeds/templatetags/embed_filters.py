@@ -1,17 +1,19 @@
 import re
 from datetime import datetime
 from hashlib import md5
+
 from django import template
 from django.core.cache import cache
 from django.conf import settings
+
 from embedly import Embedly
 from embeds.models import SavedEmbed
 
 register = template.Library()
 
 EMBED_REGEX = re.compile(r'embed:\s*(https?://[\w\d:#@%/;$()~_?\+\-=\\\.&]+)', re.I)
-USER_AGENT = 'Mozilla/5.0 (compatible; TheBayCitizen/0.1; ' \
-        '+http://www.baycitizen.org/)'
+USER_AGENT = 'Mozilla/5.0 (compatible; django-embedly/0.2; ' \
+        '+http://github.com/BayCitizen/)'
 
 @register.filter
 def embedly(html, arg=None):
@@ -28,7 +30,7 @@ def embed_replace(match, maxwidth=None):
         return cached_html
 
     # call embedly API
-    client = Embedly(user_agent=USER_AGENT)
+    client = Embedly(key=settings.EMBEDLY_KEY, user_agent=USER_AGENT)
     if maxwidth:
         oembed = client.oembed(url, maxwidth=maxwidth)
     else:

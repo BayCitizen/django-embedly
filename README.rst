@@ -15,6 +15,12 @@ Add 'embeds' to INSTALLED_APPS in settings.py.
 
 Run syncdb.
 
+Also, under django's settings.py add an entry for
+
+EMBEDLY_KEY = <embedly key>
+
+which can be obtained by signing up for the service.
+
 Usage
 -----
 

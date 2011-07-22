@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-embedly',
-    version='0.1',
+    version='0.2',
     description='Provides a template filter to parse embed URLs and talk to embedly API',
     author='Bay Citizen',
     author_email='info@baycitizen.org',

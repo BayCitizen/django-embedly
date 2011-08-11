@@ -55,9 +55,10 @@ def embed_replace(match, maxwidth=None):
     else:
         html = oembed.html
 
-    row.html = html
-    row.last_updated = datetime.now()
-    row.save()
+    if html:
+        row.html = html
+        row.last_updated = datetime.now()
+        row.save()
 
     # set cache
     cache.set(key, html, 86400)
